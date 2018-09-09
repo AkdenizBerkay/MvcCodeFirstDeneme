@@ -1,0 +1,21 @@
+﻿@{
+    MvcCodeFirst.Models.Managers.DatabaseContext db = new MvcCodeFirst.Models.Managers.DatabaseContext();
+    List<MvcCodeFirst.Models.Kisiler> Kisiler = db.Kisiler.ToList();
+}
+<br />
+<div class="container">
+    <div class="row">
+        <ul class="list-group">
+            @foreach (MvcCodeFirst.Models.Kisiler kisi in Kisiler)
+            {
+                <li class="list-group-item">
+                    <a href="/ActionResults/Dosyalar4?Kisi=@kisi.Id">
+                        <span class="glyphicon glyphicon-user"></span>
+                        
+                        @kisi.Ad  @(" ")  @kisi.Soyad @(" (")  @kisi.Yas @(")")
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

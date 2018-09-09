@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Ajax";
+}
+
+<h2>Ajax</h2>
+
+
+@Ajax.ActionLink("Verileri Yükle", "LoadData", null,
+    new AjaxOptions()
+    {
+        HttpMethod = "GET",
+        UpdateTargetId = "list",
+        InsertionMode = InsertionMode.Replace,
+        LoadingElementId ="loading",
+        LoadingElementDuration=300,
+
+    },
+    new { @class = "btn btn-success" })
+<br />
+<div class="alert alert-warning" id="loading" role="alert" style="display:none">
+    yükleniyor...
+</div>
+
+<ul class="list-group" id="list"></ul>

@@ -1,0 +1,20 @@
+﻿@model List<string>
+
+@foreach (string s in Model)
+{
+    <li class="list-group-item" id="@s">
+        @Ajax.ActionLink(
+     "Sil",
+     "RemoveData",
+     new { ad = s },
+        new AjaxOptions {
+            HttpMethod ="GET",
+            LoadingElementId ="loading",
+            LoadingElementDuration =300,
+            InsertionMode =InsertionMode.ReplaceWith,
+            UpdateTargetId=s
+        },
+        new { @class="btn btn-danger"})&nbsp;
+        @s
+    </li>
+}

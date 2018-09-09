@@ -1,0 +1,51 @@
+﻿@using MvcCodeFirst.Models
+@model Kisiler
+@{
+    ViewBag.Title = "Duzenle";
+}
+
+<h2>Kişi Düzenle</h2>
+<hr />
+<br />
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <div class="row">
+            <div class="form-group col-md-5">
+                <label class="control-label col-md-2">Ad: </label>
+                @Html.TextBoxFor(k => k.Ad, new { @class = "form-control col-md-10" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-5">
+                <label class="control-label col-md-2">Soyad: </label>
+                @Html.TextBoxFor(k => k.Soyad, new { @class = "form-control col-md-10" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-5">
+                <label class="control-label col-md-2">Yaş: </label>
+                @Html.TextBoxFor(k => k.Yas, new { @class = "form-control col-md-10" })
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+          
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+            </div>
+        </div>
+
+}
+
+@*<script type="text/javascript">
+        $(function () {
+            $("#kaydet").click(function () {
+                document.forms[0].submit();
+                return false;
+            });
+        });
+</script>*@
+

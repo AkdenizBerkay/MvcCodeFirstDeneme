@@ -1,0 +1,9 @@
+﻿@using MvcCodeFirst.Models
+@model List<Kisiler>
+@{
+    ViewBag.Title = "MBAGrid";
+}
+
+<h2>MBAGrid</h2>
+
+@Html.GridMBA(Model, "MBA", "MBAEdit", "MBADelete")

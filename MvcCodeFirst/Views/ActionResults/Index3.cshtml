@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index3</title>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <div>
+        <input type="submit" value="JsonGetir" id="btnJson"/>
+    </div>
+    
+    <script>
+        $(function () {
+            $("#btnJson").click(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "/ActionResults/Index4",
+                    contentType: "application/json; charset=utf-8",
+                    dataype: "json",
+                    success: function (e) {
+                        alert(e.Ad);
+                        alert(e.Soyad);
+                        alert(e.Yas);
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

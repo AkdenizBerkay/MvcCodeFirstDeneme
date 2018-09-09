@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "AdresIndex";
+}
+
+<h2>AdresIndex</h2>
+
+<hr />
+
+
+@{
+    WebGrid grid = new WebGrid(
+        source: Model,
+        columnNames: new[] { "Adres", "KisiId", "Kisi" },
+        defaultSort: "KisiId",
+        rowsPerPage: 3,
+        canPage: true,
+        canSort: true,
+        pageFieldName: "pageno",
+        sortFieldName: "sort",
+        ajaxUpdateContainerId: "Grid"
+        );
+}
+
+
+<div class="row">
+    @grid.GetHtml(tableStyle: "table table-striped table-dark",
+    fillEmptyRows:false,
+    mode:WebGridPagerModes.All,
+    numericLinksCount:3,
+    columns: grid.Columns
+         (
+        grid.Column("Adres", "Adres"),
+        grid.Column("KisiId", "KisiId"),
+        grid.Column("Kisi.Ad", "Kisi.Ad"),
+        grid.Column(format: (item) => Html.ActionLink("Düzenle", "Edit", "Grid",new { item.id }, new { id = "Duzenle"+item.id, @class = "glyphicon glyphicon-edit",style= "color:green" })),
+        grid.Column(format: (item) => Html.ActionLink("Sil", "Delete", "Grid", new { item.id }, new { id = "Sil" + item.id, @class = "glyphicon glyphicon-remove", style = "color:red" }))
+         ),
+    htmlAttributes: new { id="Grid" },
+    firstText:"[ilk]",
+    lastText: "[son]",
+    previousText: "[önceki]",
+    nextText: "[sonraki]"
+    )
+</div>

@@ -1,0 +1,117 @@
+﻿@using MvcCodeFirst.Models
+@model List<Kisiler>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<h2 id="Baslık">Index</h2>
+<div class="container">
+    <div class="row">
+        <button id="btnload" class="btn btn-success" type="button">Verileri Yükle</button>
+        <button id="btnKaydet" class="btn btn-primary" type="button">Kaydet</button>
+        <button id="btnAjax" class="btn btn-success" type="button">Verileri Getir Ajax</button>
+        <button id="btnKaydetAjax" class="btn btn-primary" type="button">Kaydet Ajax</button>
+        <button id="btnJson" class="btn btn-info" type="button">Verileri Getir Json</button>
+    </div><br />
+    <div class="row">
+        <div class="col-md-3">Ad Soyad: </div>
+        <input id="txtAdSoyad" type="text" class="col-md-9 form-control" placeholder="Ad Soyad" />
+    </div>
+    <div class="row">
+        <div class="col-md-3">Yaş: </div>
+        <input id="Yas" type="number" class="col-md-5 form-control" placeholder="Yaş" />
+    </div>
+    <div class="row">
+        <div id="loading" style="display:none" role="alert" class="alert alert-danger">
+            yükleniyor...
+        </div>
+        <br />
+
+        <ul id="list" class="list-group"></ul>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $("#btnload").click(function () {
+            //$("#list").load("/JQuery/VerileriGetir", function (data) {
+            //    Load() fonksiyonunda getteki ($("#list").html(data);)   bu satır yazılmaz
+            //load yöntemi post ile verileri gönderir url de giden veri gözukmez
+            //    $("#loading").hide(300);
+            //});
+            $("#list").empty();
+            $("#loading").show(300, function () {
+                $.get("/JQuery/VerileriGetir", function (data) {
+                    $("#list").html(data);
+                    $("#loading").hide(300);
+                });
+            });
+        });
+
+        $("#btnKaydet").click(function () {
+
+            var name = $("#txtAdSoyad").val();
+            var age = $("#txtYas").val();
+
+            $.get("/JQuery/Kaydet", { name: name, age: age });
+        });
+
+        $("#btnAjax").click(function () {
+
+            $.ajax({
+                method: "GET",
+                url: "/JQuery/VerileriGetir",
+                beforeSend: function () {
+                    $("#loading").show(300);
+                }
+            }).done(function (d) {
+                $("#list").html(d);
+            }).fail(function () {
+                alert("Hata");
+            }).always(function () {
+                $("#loading").hide(300);
+            });
+        });
+
+        $("#btnKaydetAjax").click(function () {
+
+            $.ajax({
+                method: "POST",
+                url: "/JQuery/Kaydet",
+                data: { name: $("#txtAdSoyad").val(), age: $("#txtYas").val() },
+            })
+
+                //.done(function (d) {
+                //    alert(d);
+                //});
+
+        });
+
+        $("#btnJson").click(function () {
+
+            $.ajax({
+                method: "GET",
+                url: "/JQuery/VerileriGetirJson",
+                beforeSend: function () {
+                    $("#loading").show(300);
+                }
+            }).done(function (d) {
+                for (var i in d)
+                {
+                    var kisi = d[i];
+                    var li = $("<li class='list-group-item'></li>");
+                    li.html(kisi.Ad + kisi.Soyad +" ("+ kisi.Yas+")");
+                    $("#list").append(li);
+                }
+            }).fail(function () {
+                alert("Hata");
+            }).always(function () {
+                $("#loading").hide(300);
+            });
+        });
+
+
+    });
+</script>

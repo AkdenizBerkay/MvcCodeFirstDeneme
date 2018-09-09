@@ -1,0 +1,41 @@
+﻿@using MvcCodeFirst.Helper
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Kişi Ekle</h2>
+<hr />
+<br />
+@using (Html.BeginForm())
+{
+<div class="container">
+    <div class="form-group">
+        <div class="row">
+            <label class="col-md-2 control-label">Ad: </label>
+            <input type="text" name="ad" class="col-md-3 form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <label class="col-md-2 control-label">Soyad: </label>
+            <input type="text" name="soyad" class="col-md-3 form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <label class="col-md-2 control-label">Yaş: </label>
+            <input type="text" name="yas" class="col-md-3 form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            @*@Html.MyButton1("btnKaydet", Extentions.ButtonClass.info, "Kaydet")*@
+            @*@Html.ActionLink("Kaydet","Add","HomeController",new { @class="btn btn-primary",@type="submit"})*@
+            <input type="submit" value="Kaydet" class="btn btn-primary"/>
+        </div>
+    </div>
+</div>
+}

@@ -1,0 +1,48 @@
+﻿@using MvcCodeFirst.Models
+@model List<Adresler>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Dosyalar</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/ActionResults/JavaScript"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Dosyalar</h2>
+        <hr />
+        <div class="row">
+            @Html.ActionLink("Pdf Dosya Indir", "Dosyalar2", "ActionResults")
+        </div>
+        <div class="row">
+            @Html.ActionLink("Metin Dosyası Indir", "Dosyalar3", "ActionResults")
+        </div>
+    </div>
+    @Html.Action("KategoriPartial")
+
+    <br />
+    <div class="container">
+        <div class="row">
+            <ul class="list-group">
+                @if (Model != null)
+                {
+                    foreach (MvcCodeFirst.Models.Adresler adres in Model)
+                    {
+                        <li class="list-group-item">
+                            <span class="glyphicon glyphicon-home"></span>
+                            @adres.Adres
+                        </li>
+                    }
+                }
+            </ul>
+
+        </div>
+    </div>
+</body>
+</html>

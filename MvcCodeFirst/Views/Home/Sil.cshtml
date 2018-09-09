@@ -1,0 +1,33 @@
+﻿@using MvcCodeFirst.Models
+@model Kisiler
+@{
+    ViewBag.Title = "Sil";
+}
+
+<h2>Kişi Sil</h2>
+<br />
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="alet alert-danger col-md-6" role="alert">
+            Aşağıdaki kaydı silmek istediğinizden emin misiniz?
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <b>Ad: </b>@Model.Ad
+    </div>
+    <div class="row">
+        <b>Soyad: </b>@Model.Soyad
+    </div>
+    <div class="row">
+        <b>Yaş: </b>@Model.Yas.ToString()
+    </div>
+    <br />
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <input type="submit" class="btn btn-danger" value="Sil" />
+        </div>
+    }
+</div>

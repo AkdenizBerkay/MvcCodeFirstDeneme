@@ -1,0 +1,7 @@
+﻿@using MvcCodeFirst.Models
+@model List<Kisiler>
+
+@foreach (Kisiler kisi in Model)
+{
+    <li class="list-group-item">@kisi.Ad @kisi.Soyad</li>
+}

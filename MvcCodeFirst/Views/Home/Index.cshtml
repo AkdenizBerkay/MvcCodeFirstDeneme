@@ -1,0 +1,21 @@
+﻿@using MvcCodeFirst.Models
+@using MvcCodeFirst.Helper
+@model List<Kisiler>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-offset-11">
+
+            @Html.MyButton("btnAdd", Extentions.ButtonClass.info, "Ekle", Extentions.IconClass.plus, controller: "Home", view:"Add")
+
+        </div>
+    </div>
+    @MyHelper.Table("tablo", "table table-striped table-dark", Model)
+</div>

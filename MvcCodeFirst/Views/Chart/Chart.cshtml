@@ -1,0 +1,16 @@
+﻿
+@using System.Web.Helpers
+
+
+@{
+    Chart chart = new Chart(500, 500);
+    chart.AddTitle("Gün Bazlı Ürün Satış Miktarı Grafiği");
+    chart.AddLegend(title: "Ürünler");
+    chart.AddSeries(name: "Product A", chartType: "Column", xValue: new[] { 20, 40, 60 }, yValues: new[] { 800, 1200, 2300 });
+    chart.AddSeries(name: "Product B", chartType: "Column", xValue: new[] { 20, 40, 60 }, yValues: new[] { 900, 1600, 3300 });
+
+
+    //üstteki kodu server sideda da yazabiliriz return View(chart) diyerek buraya gelir burdan index sayfasında gösterir
+
+    chart.Write();
+}
