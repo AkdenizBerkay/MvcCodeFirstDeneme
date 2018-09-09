@@ -12,6 +12,7 @@ namespace MvcCodeFirst.Controllers
 {
     public class HomeController : Controller
     {
+        //Test Branch indeki development
         DatabaseContext db = new DatabaseContext();
         // GET: Home
         [AuthFilter, ActFilter,ExcFilter]
